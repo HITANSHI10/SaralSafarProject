@@ -1,0 +1,219 @@
+/* Main Home Section */
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+main {
+  flex-grow: 1;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Bus Animation Container */
+.bus-container {
+  position: relative;
+  height: 200px; /* Keep container height to fit the bus */
+  width: 100%; /* Ensure full width of the screen */
+  margin-bottom: 20px; /* Small margin between sections */
+  overflow: hidden; /* Prevent overflow */
+  display: flex;
+  justify-content: flex-start; /* Start the bus off the left */
+  align-items: center; /* Vertically center the bus */
+  background-color: transparent; /* Ensure no background color */
+}
+
+/* Bus Image Styling */
+.bus-image {
+  position: absolute;
+  left: -600px; /* Start the bus far off the screen */
+  width: 600px; /* Adjust the size of the bus image directly */
+  max-width: none; /* Remove any max-width constraint */
+  height: auto; /* Maintain aspect ratio */
+  background: none; /* Remove any background from the image itself */
+  transition: transform 3s ease-in-out; /* Smooth transition */
+  box-shadow: none; /* Remove any shadow if present */
+  border: none; /* Ensure no border is applied */
+}
+
+.animate .bus-image {
+  transform: translateX(220vw); /* Move bus across the screen */
+}
+
+
+/* Welcome Section Styling */
+.welcome {
+  max-width: 100%;
+  margin: 1rem auto 0 auto;
+  text-align: center;
+  padding: 1rem 0rem;
+  transition: transform 1s ease-in-out, font-size 1s ease-in-out, opacity 1s ease-in-out;
+  position: sticky; /* Make it stick to the top when scrolling */
+  top: 0;
+  z-index: 5; /* Ensure it's above other content while visible */
+}
+
+.welcome h2 {
+  font-size: 3.5rem; /* Initial large size */
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: transform 1s ease-in-out, font-size 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.grow-small h2 {
+  font-size: 2rem; /* Smaller size when scrolling down */
+  opacity: 0; /* Make it disappear on scroll */
+  transform: scale(0.75);
+}
+
+.welcome h4 {
+  font-size: 2.5rem; /* Initial large size */
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
+  color: #474545;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+  'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+   'Helvetica Neue', sans-serif;
+  transition: transform 1s ease-in-out, font-size 1s ease-in-out,
+   opacity 1s ease-in-out;
+}
+
+.grow-small h4 {
+  font-size: 1rem; /* Smaller size when scrolling down */
+  opacity: 0; /* Make it disappear on scroll */
+  transform: scale(0.25);
+}
+
+/* Services Section */
+.services-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem auto;
+  max-width: 1200px;
+  position: relative;
+}
+
+/* Service cards with black background */
+.service-card {
+  background-color: #000;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect on the service card */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+}
+
+.service-card img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  color: #ff9800;
+  margin: 1rem 0 0.5rem;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Service card states */
+.service-card.active {
+  transform: scale(1.2);
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+  z-index: 10;
+}
+
+.service-card.centered {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0) scale(0.9);
+  transition: transform 0.5s ease-in-out;
+}
+
+.service-card.blurred {
+  filter: blur(5px);
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Additional info box */
+.additional-info {
+  margin-top: 1rem;
+  background-color: #222;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Why Choose Saral Safar Section */
+.why-choose-section {
+  margin: 0rem ;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.show-text {
+  opacity: 1; /* Fade in the text when bus crosses */
+}
+
+.why-choose-section h2 {
+  color: black;
+  font-family: 'merryweather',serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Feature Boxes */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-box {
+  background-color: rgb(249, 73, 73);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  transform: translateY(-100px); /* Start above the view */
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.drop-box {
+  transform: translateY(0); /* Drop down */
+  opacity: 1; /* Fade in */
+}
+
+.feature-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-box p {
+  font-size: 1rem;
+}

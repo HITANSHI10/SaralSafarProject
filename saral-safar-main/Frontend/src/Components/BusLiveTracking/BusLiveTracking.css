@@ -1,0 +1,251 @@
+/* Main container */
+.bus-live-tracking {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 30%, #f5d1d1 100%);
+  animation: fadeIn 1s ease-in-out;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background glow effects */
+.bus-live-tracking::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(216, 31, 11, 0.4);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulseLarge 5s infinite ease-in-out;
+}
+
+.bus-live-tracking::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 350px;
+  height: 350px;
+  background-color: rgba(216, 31, 11, 0.4);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulseLargeReverse 5s infinite ease-in-out;
+}
+
+.bus-live-tracking > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Left section */
+.left-section {
+  flex: 2;
+  padding: 20px;
+  animation: fadeInWithDelay 2s ease forwards 0.5s;
+  opacity: 0;
+}
+
+.live-tracking-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #d81f0b;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+  animation: popUpAndZoomOut 1.5s ease-in-out forwards;
+  cursor: pointer;
+}
+
+.live-tracking-title:hover {
+  text-shadow: 4px 4px 15px rgba(255, 255, 255, 0.8), 0 0 15px rgba(216, 31, 11, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+
+.subheading {
+  font-size: 1.8rem;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeInWithDelay 1.5s ease forwards 2s;
+}
+
+/* Map container */
+.map-container {
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transform: scale(0.9);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.map-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Leaflet map container */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Right section */
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeInWithDelay 1.5s ease forwards 3s;
+}
+
+.live-count-box {
+  background-color: white;
+  color: #d81f0b;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.live-count-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.live-count-box h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.count-display {
+  font-size: 3.5rem;
+  font-weight: bold;
+  background-color: #d81f0b;
+  color: whitesmoke;
+  padding: 40px;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.live-count-box:hover .count-display {
+  background-color: #ffffff;
+  color: #c11205;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popUpAndZoomOut {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInWithDelay {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseLarge {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseLargeReverse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bus-live-tracking {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .right-section {
+    margin-top: 20px;
+  }
+
+  .map-container {
+    max-width: 100%;
+  }
+
+  .live-count-box {
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .count-display {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
+  }
+
+  .live-tracking-title {
+    font-size: 2.5rem;
+  }
+
+  .subheading {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,213 @@
+.header {
+  background-color: #d81f0b; /* Semi-transparent red */
+  background-image: url('../../assets/HeaderBus.png');
+  background-size: cover; /* Cover the whole header */
+  background-position: center;
+  background-blend-mode: multiply;
+  backdrop-filter: blur(10px); /* Blur the background for a modern effect */
+  padding: 2rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  position: relative; /* Make the header sticky */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: auto;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Sticky Header Transition */
+.header.sticky {
+  background-color: rgba(216, 31, 11, 0.95);
+  transition: background-color 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 120px;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
+.header nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.header nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+}
+
+.header nav a:hover {
+  color: #ffcc66;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.header nav ul li {
+  padding: 0.2rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.header nav ul li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hover underline effect */
+.header nav ul li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #ffcc66;
+  left: 50%;
+  bottom: 0;
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.header nav ul li:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.profile-dropdown:hover .profile-image {
+  transform: scale(1.1);
+}
+
+/* Dropdown Menu for Logout */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.profile-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-item span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #d81f0b;
+}
+
+/* Language Selector */
+.language-selector {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.language-selector:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Google Translator Embed */
+#google_translate_element {
+  display: none; /* Initially hidden */
+}
+
+.header:hover #google_translate_element {
+  display: inline-block; /* Show on hover */
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+
+  .logo-image {
+    width: 100px;
+  }
+
+  .header nav ul {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .language-selector {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .header nav ul {
+    display: none;
+  }
+
+  .header.active nav ul {
+    display: flex;
+  }
+}
